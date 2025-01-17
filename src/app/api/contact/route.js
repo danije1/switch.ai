@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 // Funktion zum Senden der Bestätigungs-Mail
-const sendConfirmationEmail = async (email) => {
+const sendConfirmationEmail = async (name, email, message) => {
   const transporter = nodemailer.createTransport({
     host: "mail.gmx.net", // GMX SMTP-Server
     port: 587, // Port für TLS
@@ -13,11 +13,25 @@ const sendConfirmationEmail = async (email) => {
     },
   });
 
+  // Dynamische Nachricht
+  const emailBody = `
+Hallo ${name || "Freund"}, 
+
+vielen Dank für deine Nachricht und dein Interesse an switch.ai!
+Wir werden uns bald bei dir melden.
+
+Deine Nachricht: 
+"${message}"
+
+Mit freundlichen Grüßen,  
+Dein switch.ai-Team
+  `;
+
   return transporter.sendMail({
     from: process.env.EMAIL_USER,
     to: email,
-    subject: "Welcome to switch.ai!",
-    text: "Thank you for your message! We will get back to you shortly.",
+    subject: "Willkommen bei switch.ai!",
+    text: emailBody,
   });
 };
 
@@ -30,12 +44,7 @@ export async function POST(req) {
 
   try {
     // Bestätigungs-Mail senden
-    await sendConfirmationEmail(email);
-
-    // Optional: Datenbank-Eintrag (hier auskommentiert, falls nicht benötigt)
-    // const dbResult = await prisma.contact.create({
-    //   data: { name, email, message },
-    // });
+    await sendConfirmationEmail(name, email, message);
 
     console.log("Message received:", { name, email, message });
 
