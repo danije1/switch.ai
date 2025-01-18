@@ -1,0 +1,998 @@
+/* Homepage.module.css */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap");
+
+.container {
+  /*max-width: 1400px;*/ /* Maximale Breite für modernen Look */
+  margin: 0 auto; /* Zentriert den Container */
+  padding: 0 0px; /* Mehr Padding für größere Bildschirme */
+  box-sizing: border-box;
+}
+
+/* Navbar zentriert und fest */
+.navbar {
+  /*max-width: 1400px;*/
+  width: 100vw;
+  padding: 10px 30px;
+  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 0 0 20px 20px;
+  color: white;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 50%;
+  margin-right: auto;
+  margin-left: -20px;
+  gap: -10px;
+}
+
+.logo {
+  margin-left: -45px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 3px;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+/* Container für die Links */
+.linksContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px; /* Gleichmäßiger Abstand zwischen den Links */
+  flex-grow: 1;
+  max-width: 800px;
+  margin-right: -70px;
+  flex-direction: row; /* Stellt sicher, dass die Links waagerecht ausgerichtet sind */
+}
+
+/* Einzelne Links */
+.navLink {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px;
+  transition: color 0.3s ease;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.navLink:hover {
+  color: #1a73e8;
+  transform: scale(1.1);
+}
+
+/* Unabhängige Trennlinien */
+.linkSeparator {
+  width: 2px;
+  height: 20px;
+  background-color: white;
+  opacity: 0.7;
+}
+
+/*.authButtons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-right: 0px;
+}*/
+
+/*.login {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}*/
+
+/* Hover Effekte */
+/*.login:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1);
+    border-color: #999;
+}*/
+
+/*.register {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    margin-right: 25px; /* Register Button nach links verschieben */
+
+/*.register:hover {
+    background-color: #218838;
+    transform: scale(1.1);
+    border-color: #1f7a34;
+}*/
+
+/* Hero Section */
+.heroSection {
+  /*max-width: 1320px;*/
+  margin: 0 auto;
+  padding: 0;
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Responsive Image */
+.heroSection img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.9;
+  z-index: -1;
+}
+
+.heroSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.heroText {
+  position: relative;
+  font-family: "Roboto Condensed", sans-serif;
+  color: white;
+  text-align: center;
+  z-index: 2;
+  font-size: clamp(2rem, 4vw, 3.5rem); /* Responsiv skalierbare Schriftgröße */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  opacity: 1;
+  padding: 20px;
+  max-width: 900px;
+  line-height: 1.2;
+}
+
+.heroText p {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.5rem); /* Kleinere Schriftgröße */
+  font-weight: 400; /* Kein Bold, normaler Text */
+  margin-top: 10px; /* Abstand zum Haupttext */
+  line-height: 1.5; /* Bessere Lesbarkeit */
+  color: #f1f1f1; /* Helle Schriftfarbe */
+}
+
+.ctaButton {
+  margin-top: 20px;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: #28a745;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.ctaButton:hover {
+  transform: scale(1.1);
+  background-color: #218838;
+}
+
+@media (max-width: 768px) {
+  .heroText {
+    font-size: 2rem;
+  }
+
+  .ctaButton {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+}
+
+.infoSection {
+  text-align: center;
+  padding: 50px;
+  background: #08133c;
+}
+
+.learnMore {
+  margin-top: 60px;
+  font-size: large;
+  padding: 5px 14px;
+  /*background: #08133C;*/
+  border: none;
+  border-radius: 50px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.learnMore:hover {
+  background-color: #218838;
+  color: white;
+}
+
+.infoSection h2 {
+  font-size: 45px;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.infoSection p {
+  font-family: "Roboto Condensed", sans-serif;
+  margin: 0 auto;
+  margin-top: 18px;
+  font-size: large;
+  text-align: justify;
+  line-height: 1.6;
+  padding: 10px 50px;
+}
+
+@media (min-width: 768px) {
+  .infoSection p {
+    padding: 10px 150px; /* Etwas größere Werte */
+  }
+}
+
+@media (min-width: 1024px) {
+  .infoSection p {
+    margin: 0 400px; /* Originalwerte */
+    padding: 10px 200px; /* Originalwerte */
+  }
+}
+
+/* Infografik & Cards Section */
+.infographicSection,
+.cardsSection,
+.requirementsSection,
+.kiSolutionsSection {
+  /*max-width: 1200px;*/
+  margin: 0 auto;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+/* Flexibles Grid-System */
+.requirementsGrid,
+.cardsContainer,
+.kiSolutionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  justify-content: center;
+  align-items: start;
+}
+
+/* Konsistenter Abstand in allen Elementen */
+.card,
+.requirementItem,
+.compatibilityItem {
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover,
+.requirementItem:hover,
+.compatibilityItem:hover {
+  transform: scale(1.05);
+}
+
+/* Container für den Roboterbereich */
+.robotSection {
+  position: relative;
+  background: #08133c;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Linien */
+.lineTop {
+  position: absolute;
+  top: 45%;
+  width: 100%;
+  height: 6px;
+  background: white;
+  z-index: 1;
+  margin-top: 5px;
+}
+
+.lineMiddle {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 5px;
+  background: #4a90e2; /* Blaue Linie */
+  z-index: 1;
+  margin-top: 5px;
+}
+
+.lineBottom {
+  position: absolute;
+  top: 55%;
+  width: 100%;
+  height: 6px;
+  background: white;
+  z-index: 1;
+  margin-top: 3px;
+}
+
+/* Zusätzliche Linien innerhalb */
+.innerLine {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 2px;
+  background: #337ab7;
+  transform: translateY(-50%);
+  z-index: 1;
+  margin-top: 5px;
+}
+
+/* Kreise an den Seiten */
+.circleLeft,
+.circleRight {
+  top: 52%;
+  transform: translateY(-50%);
+  background: #2a5daf;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  border: 10px solid #d3d3d3;
+  z-index: 2;
+  margin-top: -30px;
+}
+
+.circleLeft {
+  position: absolute;
+  left: 0;
+  transform: translateX(-50%);
+}
+
+.circleRight {
+  position: absolute;
+  right: 0;
+  transform: translateX(50%);
+}
+
+/* Ladestation */
+.chargingStation {
+  position: absolute;
+  right: 10%;
+  z-index: 3;
+  width: 220px;
+  height: auto;
+}
+
+/* Roboter */
+.robot {
+  position: absolute;
+  right: 5%;
+  top: 10%;
+  bottom: 0;
+  z-index: 3;
+  width: 250px;
+  height: auto;
+  transition: transform 1s ease-in-out;
+}
+
+.robot:hover {
+  transform: scale(1.05);
+}
+
+.robotContainer:hover .robotTooltip:hover {
+  display: block;
+}
+
+.robotMoving {
+  position: fixed;
+  right: 5%;
+  bottom: 5%;
+  z-index: 4;
+  transform: scale(1.1); /* Leicht vergrößert beim Scrollen */
+}
+
+.robotContainer {
+  position: relative;
+}
+
+.robotTooltip {
+  position: absolute;
+  bottom: 180px; /* Text oberhalb des Roboters */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+  z-index: 5;
+  animation: fadeIn 0.3s ease-in-out;
+  white-space: nowrap; /* Verhindert Zeilenumbruch */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Infografik Section */
+.infographicSection {
+  /*max-width: 1400px;*/
+  padding: 80px 0;
+  text-align: center;
+  background: linear-gradient(to bottom, #08133c 50%, #1a2453 100%);
+  color: white;
+}
+
+.infographicSection h1 {
+  font-size: 40px;
+  margin-bottom: 60px;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.infographicContent {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 50px;
+  padding-top: 20px;
+  margin-bottom: 30px;
+}
+
+.deviceSelection {
+  background-color: #0a1b3f;
+  border: 1px solid white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.deviceSelection h1 {
+  font-size: 40px;
+  margin-bottom: 60px;
+}
+
+.deviceSelection ul {
+  list-style: none;
+  padding: 0;
+}
+
+.deviceSelection li {
+  background: #007bff;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  text-align: center;
+}
+
+.houseGraphic img {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Video Section Styling */
+.videoSection {
+  text-align: center;
+  padding: 80px;
+  background: linear-gradient(to bottom, #1a2453 0%, #08133c 50%, #08133c 100%);
+  color: white;
+}
+
+.videoSection h1 {
+  font-size: 30px;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.videoTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.videoElement {
+  max-width: 80%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+  outline: none;
+  margin-bottom: 30px;
+}
+
+/* Karten Section Styling */
+.cardsSection {
+  /*max-width: 1400px;*/
+  padding: 80px;
+  text-align: center;
+  background: linear-gradient(to bottom, #08133c 0%, #08133c 50%, #1a2453 100%);
+  color: white;
+}
+
+.sectionCardTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 50px;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.sectionDescription {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: #d1d1d1;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.cardsContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 150px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 350px;
+  height: 400px;
+  padding: 12px;
+  align-items: center;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding: 2px;
+  text-align: center;
+  background: #08133c;
+  color: white;
+}
+
+.cardContent h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+}
+
+.learnMoreButton {
+  padding: 10px 20px;
+  background: #218838;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.learnMoreButton:hover {
+  background: #1e7d33;
+}
+
+/* KI-Lösungen Section Styling */
+.kiSolutionsSection {
+  /*max-width: 1400px;*/
+  padding: 80px;
+  text-align: center;
+  background: linear-gradient(to bottom, #1a2453 0%, #08133c 50%, #08133c 100%);
+  color: white;
+}
+
+.kiSolutionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 1200px;
+}
+
+.kiItem {
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.kiItem:hover {
+  transform: scale(1.05);
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.sectionDescription {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: #d1d1d1;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+/* Anforderungen Section */
+.requirementsSection {
+  /*max-width: 1400px;*/
+  padding: 80px 400px;
+  text-align: center;
+  background: #08133c;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 120px;
+  padding-top: 70px;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+/* Grid Layout für die Anforderungen */
+.requirementsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+  margin-top: 50px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Einzelne Box */
+.requirementItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: none;
+  box-shadow: none;
+  text-align: center;
+  align-items: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.requirementItem:hover {
+  transform: scale(1.05);
+}
+
+.requirementItem img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.requirementItem p {
+  font-size: 14px;
+  margin: 5px 0;
+  text-align: center;
+  line-height: 1.4;
+  color: #d1d1d1;
+  margin-bottom: 50px;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.requirementItem img,
+.requirementItem p {
+  position: center;
+  margin: 1;
+}
+
+@media (max-width: 768px) {
+  .requirementsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Smarte Kontrolle Section */
+.smartControlSection {
+  position: relative;
+  padding: 80px 0;
+  height: 300px;
+  background-color: #08133c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* Linien */
+.lineTop {
+  position: absolute;
+  top: 45%;
+  width: 100%;
+  height: 6px;
+  background: white;
+  z-index: 1;
+  margin-top: 5px;
+}
+
+.lineMiddle {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 5px;
+  background: #4a90e2; /* Blaue Linie */
+  z-index: 1;
+  margin-top: 5px;
+}
+
+.lineBottom {
+  position: absolute;
+  top: 55%;
+  width: 100%;
+  height: 6px;
+  background: white;
+  z-index: 1;
+  margin-top: 3px;
+}
+
+/* Kreise */
+.circleLeft,
+.circleRight {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #d3d3d3;
+  border: 7px solid #1a73e8;
+}
+
+/* Text und Button */
+.smartControlText {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  text-align: center;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  z-index: 2;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.smartButton {
+  margin-top: 50px;
+  padding: 12px 24px;
+  background: #1a73e8;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.smartButton:hover {
+  transform: scale(1.1);
+  background-color: #0a5ec7;
+}
+
+/* Ladestation Bild */
+.smartCharger {
+  margin-top: 50px;
+  right: 10%;
+  z-index: 2;
+  position: absolute;
+  width: 220px;
+  height: auto;
+}
+
+/* Kompatibilität Section */
+.compatibilitySection {
+  /*max-width: 1400px;*/
+  text-align: center;
+  padding: 10px 0;
+  background: linear-gradient(to bottom, #08133c 0%, #08133c 50%, #1a2453 100%);
+  color: white;
+}
+
+.compatibilitySection h2 {
+  font-size: 2.5rem;
+  margin-top: 250px;
+  margin-bottom: 50px;
+  font-weight: bold;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.compatibilityGrid {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Stellt sicher, dass alle Elemente oben ausgerichtet sind */
+  gap: 50px; /* Abstand zwischen den Boxen */
+  text-align: center;
+  margin: 10px;
+}
+
+.compatibilityItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Inhalt mittig ausrichten */
+  align-items: center;
+  text-align: center;
+  max-width: 300px;
+  box-shadow: none;
+}
+
+.brandLogo {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 20px; /* Abstand zwischen Icon und Text */
+  display: block;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: opacity 0.3 ease;
+}
+
+.compatibilityItem h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.compatibilityItem p {
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 250px;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.compatibilityItem h3,
+.compatibilityItem p {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Hover-Effekt: Zeige den Text an */
+.compatibilityItem:hover h3,
+.compatibilityItem:hover p {
+  opacity: 1; /* Text sichtbar machen */
+  transform: translateY(0); /* Zurück zur normalen Position */
+}
+
+.compatibilityItem:hover .brandLogo {
+  transform: scale(1.1);
+}
+
+/* Footer Styling */
+.footer {
+  /*max-width: 1400px;*/
+  margin: 0 auto;
+  padding: 60px 20px;
+  text-align: center;
+  background: #1a2453;
+  color: white;
+}
+
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footerLogo {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.footerLogo img {
+  width: 50px;
+  margin-top: 5px;
+  height: auto;
+}
+
+.footerLine {
+  width: 80%;
+  height: 1px;
+  background: #ccc;
+  margin: 20px 0;
+}
+
+.copyright {
+  font-size: 1rem;
+  color: #ccc;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.robotContainer {
+  position: fixed; /* Fixiert den Roboter an der Seite */
+  right: 20px; /* Positioniert den Roboter 20px vom rechten Rand */
+  top: 50%; /* Vertikale Zentrierung auf der Seite */
+  transform: translateY(
+    -50%
+  ); /* Kompensation der Höhe des Roboters für exakte vertikale Zentrierung */
+  z-index: 9999; /* Sicherstellen, dass der Roboter immer im Vordergrund bleibt */
+}

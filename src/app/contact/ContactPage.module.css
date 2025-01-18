@@ -1,0 +1,98 @@
+/* Container für die Seite */
+.contactContainer {
+  background: linear-gradient(to bottom, #08133c, #1a2453);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Titel */
+.contactTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Untertitel */
+.contactSubtitle {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  max-width: 600px;
+}
+
+/* Kontaktformular */
+.contactForm {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Eingabefelder und Labels */
+.formGroup label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.formGroup input,
+.formGroup textarea {
+  padding: 10px;
+}
+
+.input,
+.textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+/* Textarea Styling */
+.textarea {
+  resize: none;
+  height: 100px;
+}
+
+/* Button */
+.submitButton {
+  background: linear-gradient(to right, #28a745, #218838);
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submitButton:hover {
+  background: linear-gradient(to right, #218838, #28a745);
+}
+
+.backToHome {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.backToHome a {
+  color: #1a73e8;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.backToHome a:hover {
+  color: #0a5ec7;
+}
