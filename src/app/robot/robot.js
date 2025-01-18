@@ -74,83 +74,90 @@ const RobotWithEyes = () => {
   }, [direction]);
 
   return (
-    <div
-      ref={robotRef}
-      style={{
-        position: "absolute",
-        left: "50%",
-        bottom: "20px",
-        transform: `translateX(-50%) translateY(${yOffset}px)`,
-        width: "200px", // Robotergröße (anpassbar)
-        height: "200px", // Robotergröße (anpassbar)
-      }}
-    >
-      <img
-        src="/robot.svg"
-        alt="Robot"
-        style={{
-          width: "100%",
-          height: "100%",
-        }}
-      />
-      {/* Auge 1 */}
+    <div>
+      {/* Roboter im Vordergrund rechts */}
       <div
-        ref={eyeRefs.current[0]}
+        ref={robotRef}
+        className="robotContainer"
         style={{
-          position: "absolute",
-          top: "30%", // Position relativ zum Roboter
-          left: "35%",
-          width: "10%", // Größe relativ zum Roboter
-          height: "10%",
-          backgroundColor: "white",
-          borderRadius: "50%",
-          overflow: "hidden", // Verhindert, dass die Pupille über den Augapfel hinausgeht
+          position: "fixed", // Jetzt ist der Roboter fixiert und bewegt sich nicht mit dem Scrollen
+          right: "20px", // Positioniert den Roboter am rechten Rand
+          bottom: "20px",
+          transform: `translateX(-50%) translateY(${yOffset}px)`,
+          zIndex: 9999, // Roboter immer im Vordergrund
+          width: "200px", // Robotergröße (anpassbar)
+          height: "200px", // Robotergröße (anpassbar)
         }}
       >
-        {/* Pupille 1 */}
-        <div
-          ref={pupilRefs.current[0]}
+        {/* SVG-Roboter, der aus der public/robot.svg Datei geladen wird */}
+        <img
+          src="/robot.svg"
+          alt="Roboter"
           style={{
-            position: "absolute",
-            top: "30%", // Start in der Mitte des Augapfels
-            left: "30%",
-            width: "40%", // Größe der Pupille relativ zum Augapfel
-            height: "40%",
-            backgroundColor: "black",
-            borderRadius: "50%",
-            transform: "translate(-50%, -50%)",
+            width: "100%", // Roboter passt sich der Containergröße an
+            height: "100%",
           }}
-        ></div>
-      </div>
+        />
 
-      {/* Auge 2 */}
-      <div
-        ref={eyeRefs.current[1]}
-        style={{
-          position: "absolute",
-          top: "30%", // Position relativ zum Roboter
-          left: "60%",
-          width: "10%", // Größe relativ zum Roboter
-          height: "10%",
-          backgroundColor: "white",
-          borderRadius: "50%",
-          overflow: "hidden",
-        }}
-      >
-        {/* Pupille 2 */}
+        {/* Auge 1 */}
         <div
-          ref={pupilRefs.current[1]}
+          ref={eyeRefs.current[0]}
           style={{
             position: "absolute",
-            top: "30%", // Start in der Mitte des Augapfels
-            left: "30%",
-            width: "40%", // Größe der Pupille relativ zum Augapfel
-            height: "40%",
-            backgroundColor: "black",
+            top: "30%", // Position relativ zum Roboter
+            left: "35%",
+            width: "10%", // Größe relativ zum Roboter
+            height: "10%",
+            backgroundColor: "white",
             borderRadius: "50%",
-            transform: "translate(-50%, -50%)",
+            overflow: "hidden", // Verhindert, dass die Pupille über den Augapfel hinausgeht
           }}
-        ></div>
+        >
+          {/* Pupille 1 */}
+          <div
+            ref={pupilRefs.current[0]}
+            style={{
+              position: "absolute",
+              top: "30%", // Start in der Mitte des Augapfels
+              left: "30%",
+              width: "40%", // Größe der Pupille relativ zum Augapfel
+              height: "40%",
+              backgroundColor: "black",
+              borderRadius: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          ></div>
+        </div>
+
+        {/* Auge 2 */}
+        <div
+          ref={eyeRefs.current[1]}
+          style={{
+            position: "absolute",
+            top: "30%", // Position relativ zum Roboter
+            left: "60%",
+            width: "10%", // Größe relativ zum Roboter
+            height: "10%",
+            backgroundColor: "white",
+            borderRadius: "50%",
+            overflow: "hidden",
+          }}
+        >
+          {/* Pupille 2 */}
+          <div
+            ref={pupilRefs.current[1]}
+            style={{
+              position: "absolute",
+              top: "30%", // Start in der Mitte des Augapfels
+              left: "30%",
+              width: "40%", // Größe der Pupille relativ zum Augapfel
+              height: "40%",
+              backgroundColor: "black",
+              borderRadius: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          ></div>
+        </div>
       </div>
     </div>
   );

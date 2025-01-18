@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./Homepage.module.css";
+import RobotWithEyes from "./robot/robot"; // Pfad zur RobotWithEyes-Komponente
 
 const HomePage = () => {
   const [isRobotMoving, setIsRobotMoving] = useState(false); // Zustand für Roboterbewegung
@@ -101,13 +102,7 @@ const HomePage = () => {
         <div className={styles.lineTop}></div>
         <div className={styles.lineMiddle}></div>
         <div className={styles.lineBottom}></div>
-        <div
-          className={styles.robotContainer}
-          onMouseEnter={() => setIsRobotHovered(true)} // Hover-Ereignis starten
-          onMouseLeave={() => setIsRobotHovered(false)} // Hover-Ereignis beenden
-        ></div>
-
-        {/* Ladestation (statisch) */}
+        {/* Ladestation */}
         <Image
           src="/images/Charger.svg"
           alt="Ladestation"
@@ -115,15 +110,9 @@ const HomePage = () => {
           width={200}
           height={400}
         />
-
-        {/* Roboter (bewegt sich beim Scrollen) */}
-        <Image
-          src="/images/robot.png"
-          alt="Roboter"
-          className={isRobotMoving ? styles.robotMoving : styles.robot}
-          width={150}
-          height={150}
-        />
+        {/* Roboter */}
+        <RobotWithEyes />{" "}
+        {/* SVG-Roboter, der jetzt rechts bleibt und mit der Seite mitfährt */}
         {isRobotHovered && (
           <div className={styles.robotTooltip}>
             <p>Hallo! Ich bin hier, um dir zu helfen. 🤖</p>

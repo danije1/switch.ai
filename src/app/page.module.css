@@ -163,3 +163,18 @@ a.secondary {
     filter: invert();
   }
 }
+
+.robotContainer {
+  z-index: 9999; /* Roboter-Container wird vor anderen Elementen angezeigt */
+  position: fixed; /* Fixiert den Roboter an einer bestimmten Stelle */
+  right: 20px; /* Der Roboter wird am rechten Rand der Seite positioniert */
+  bottom: 50px; /* Abstand von der unteren Seite der Seite */
+  z-index: 9999; /* Roboter bleibt immer im Vordergrund */
+  width: auto; /* Kann angepasst werden, wenn du eine bestimmte Größe möchtest */
+  height: auto;
+}
+
+.robot {
+  position: absolute; /* Falls nötig, damit der Roboter über anderen Elementen schwebt */
+  z-index: 9999; /* Roboter im Vordergrund */
+}

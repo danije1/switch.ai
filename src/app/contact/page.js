@@ -57,7 +57,7 @@ const ContactPage = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            placeholder="Your Name (optional)"
+            placeholder="Dein Name"
           />
         </div>
 
@@ -69,7 +69,7 @@ const ContactPage = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="Your Email (required)"
+            placeholder="Deine Email (Pflichtfeld)"
             required
           />
         </div>
@@ -82,7 +82,7 @@ const ContactPage = () => {
             rows="5"
             value={formData.message}
             onChange={handleChange}
-            placeholder="Your Message"
+            placeholder="Was möchtest du uns sagen?"
             required
           ></textarea>
         </div>

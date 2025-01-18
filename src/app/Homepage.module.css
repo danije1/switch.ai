@@ -986,3 +986,13 @@
   color: #ccc;
   font-family: "Roboto Condensed", sans-serif;
 }
+
+.robotContainer {
+  position: fixed; /* Fixiert den Roboter an der Seite */
+  right: 20px; /* Positioniert den Roboter 20px vom rechten Rand */
+  top: 50%; /* Vertikale Zentrierung auf der Seite */
+  transform: translateY(
+    -50%
+  ); /* Kompensation der Höhe des Roboters für exakte vertikale Zentrierung */
+  z-index: 9999; /* Sicherstellen, dass der Roboter immer im Vordergrund bleibt */
+}
