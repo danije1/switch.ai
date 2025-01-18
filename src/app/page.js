@@ -1,101 +1,159 @@
-import Image from "next/image";
+"use client";
+import React, { useState, useEffect, useRef } from "react";
 
-export default function Home() {
+const RobotWithEyes = () => {
+  const robotRef = useRef(null);
+  const eyeRefs = useRef([useRef(null), useRef(null)]); // Für die Augen
+  const pupilRefs = useRef([useRef(null), useRef(null)]); // Für die Pupillen
+
+  // Funktion, um die Pupillen zu bewegen
+  const followMouse = (event) => {
+    if (!robotRef.current) return;
+
+    const robotRect = robotRef.current.getBoundingClientRect();
+
+    // Augenzentren relativ zum Roboter
+    const eyes = [
+      {
+        centerX: robotRect.left + robotRect.width * 0.35,
+        centerY: robotRect.top + robotRect.height * 0.4,
+      }, // Linkes Auge
+      {
+        centerX: robotRect.left + robotRect.width * 0.65,
+        centerY: robotRect.top + robotRect.height * 0.4,
+      }, // Rechtes Auge
+    ];
+
+    const eyeRadius = robotRect.width * 0.05; // Augapfelradius (Skalierung basierend auf Roboterbreite)
+    const pupilRadius = eyeRadius * 0.4; // Pupillenradius relativ zum Augapfel
+    const maxDistance = eyeRadius - pupilRadius; // Maximale Verschiebung der Pupille
+
+    eyes.forEach((eye, index) => {
+      const angle = Math.atan2(
+        event.clientY - eye.centerY,
+        event.clientX - eye.centerX
+      );
+
+      // Begrenze die Bewegung der Pupillen
+      const distanceX = Math.cos(angle) * Math.min(maxDistance, eyeRadius);
+      const distanceY = Math.sin(angle) * Math.min(maxDistance, eyeRadius);
+
+      pupilRefs.current[
+        index
+      ].current.style.transform = `translate(${distanceX}px, ${distanceY}px)`;
+    });
+  };
+
+  // Event listener für den Mauszeiger
+  useEffect(() => {
+    document.addEventListener("mousemove", followMouse);
+
+    return () => {
+      document.removeEventListener("mousemove", followMouse);
+    };
+  }, []);
+
+  // Funktion für die Schwebebewegung
+  const [yOffset, setYOffset] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  useEffect(() => {
+    const moveRobotUpDown = () => {
+      setYOffset((prev) => {
+        if (prev >= 10) {
+          setDirection(-1);
+        } else if (prev <= -10) {
+          setDirection(1);
+        }
+        return prev + direction;
+      });
+    };
+
+    const interval = setInterval(moveRobotUpDown, 50); // Alle 50ms up and down bewegen
+    return () => clearInterval(interval);
+  }, [direction]);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div
+      ref={robotRef}
+      style={{
+        position: "absolute",
+        left: "50%",
+        bottom: "20px",
+        transform: `translateX(-50%) translateY(${yOffset}px)`,
+        width: "200px", // Robotergröße (anpassbar)
+        height: "200px", // Robotergröße (anpassbar)
+      }}
+    >
+      <img
+        src="/robot.svg"
+        alt="Robot"
+        style={{
+          width: "100%",
+          height: "100%",
+        }}
+      />
+      {/* Auge 1 */}
+      <div
+        ref={eyeRefs.current[0]}
+        style={{
+          position: "absolute",
+          top: "30%", // Position relativ zum Roboter
+          left: "35%",
+          width: "10%", // Größe relativ zum Roboter
+          height: "10%",
+          backgroundColor: "white",
+          borderRadius: "50%",
+          overflow: "hidden", // Verhindert, dass die Pupille über den Augapfel hinausgeht
+        }}
+      >
+        {/* Pupille 1 */}
+        <div
+          ref={pupilRefs.current[0]}
+          style={{
+            position: "absolute",
+            top: "30%", // Start in der Mitte des Augapfels
+            left: "30%",
+            width: "40%", // Größe der Pupille relativ zum Augapfel
+            height: "40%",
+            backgroundColor: "black",
+            borderRadius: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        ></div>
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      {/* Auge 2 */}
+      <div
+        ref={eyeRefs.current[1]}
+        style={{
+          position: "absolute",
+          top: "30%", // Position relativ zum Roboter
+          left: "60%",
+          width: "10%", // Größe relativ zum Roboter
+          height: "10%",
+          backgroundColor: "white",
+          borderRadius: "50%",
+          overflow: "hidden",
+        }}
+      >
+        {/* Pupille 2 */}
+        <div
+          ref={pupilRefs.current[1]}
+          style={{
+            position: "absolute",
+            top: "30%", // Start in der Mitte des Augapfels
+            left: "30%",
+            width: "40%", // Größe der Pupille relativ zum Augapfel
+            height: "40%",
+            backgroundColor: "black",
+            borderRadius: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        ></div>
+      </div>
     </div>
   );
-}
+};
+
+export default RobotWithEyes;
