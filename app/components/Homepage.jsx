@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Homepage.module.css';
+import { useRouter } from 'next/router';
 
 const HomePage = () => {
   const [isRobotMoving, setIsRobotMoving] = useState(false); // Zustand für Roboterbewegung
@@ -25,7 +26,7 @@ const HomePage = () => {
       <nav className={styles.navbar} style={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}>
         <div className={styles.logoContainer} style={{ display: 'flex', alignItems: 'center' }}>
           <Image 
-            src="/images/Logo switch_AI.gif" 
+            src="/images/AI Logo.gif" 
             alt="switch.ai Logo" 
             width={180} 
             height={60} 
@@ -47,10 +48,10 @@ const HomePage = () => {
           <Link href="/contact"><span className={styles.navLink}>Kontakt</span></Link>
         </div>
 
-        {/*<div className={styles.authButtons}>
+        <div className={styles.authButtons}>
           <button className={styles.login}>Login</button>
           <button className={styles.register}>Register</button>
-        </div>*/}
+        </div>
       </nav>
 
       {/* Hero Section */}
