@@ -179,7 +179,10 @@ const RobotWithEyes = () => {
           position: "fixed",
           right: "20px",
           bottom: isVisible ? "20px" : "-200px", // Sichtbarkeit steuern
-          transform: `translateX(-50%) translateY(${yOffset}px)`,
+          transform: !isAtBottom
+            ? `translateX(-50%) translateY(${yOffset}px)`
+            : "translateX(-50%) translateY(0)", // Bedingung für Schweben
+          zIndex: 9999,
           zIndex: 9999,
           width: "200px",
           height: "200px",
