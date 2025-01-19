@@ -7,6 +7,8 @@ const RobotWithEyes = () => {
   const pupilRefs = useRef([useRef(null), useRef(null)]); // Für die Pupillen
   const [isHovered, setIsHovered] = useState(false); // Hover-Zustand für den Roboter
   const [tooltipText, setTooltipText] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
+  const [isAtBottom, setIsAtBottom] = useState(false); // Zustand, ob der Benutzer am unteren Ende ist
 
   // Array mit den Texten für den Tooltip
   const tooltipTexts = [
@@ -78,6 +80,21 @@ const RobotWithEyes = () => {
   };
 
   useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY; // Scroll-Position
+      // Sichtbar, sobald von ganz oben weggescrollt wird
+      if (scrollPosition > 0) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false); // Wieder unsichtbar, wenn der Scroll-Position wieder auf 0 ist
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
     if (!isHovered) {
       document.addEventListener("mousemove", followMouse);
     } else {
@@ -123,21 +140,48 @@ const RobotWithEyes = () => {
     return () => clearInterval(interval);
   }, [direction]);
 
+  // Funktion, um die Sichtbarkeit der Augen und Münder basierend auf der Scrollposition zu steuern
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const bottomPosition =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+      // Überprüfe, ob der Benutzer am unteren Ende der Seite ist
+      if (scrollPosition === bottomPosition) {
+        setIsAtBottom(true);
+      } else {
+        setIsAtBottom(false);
+      }
+
+      const triggerHeight = window.innerHeight / 1; // Auslöser bei halber Fensterhöhe
+      if (scrollPosition > 0) {
+        setIsVisible(true); // Sichtbar, sobald von ganz oben weggescrollt wird
+      } else {
+        setIsVisible(false); // Wieder unsichtbar, wenn ganz oben
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div>
       <div
         ref={robotRef}
-        className="robotContainer"
+        className={`robotContainer ${isVisible ? "visible" : ""}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         style={{
           position: "fixed",
           right: "20px",
-          bottom: "20px",
+          bottom: isVisible ? "20px" : "-200px", // Sichtbarkeit steuern
           transform: `translateX(-50%) translateY(${yOffset}px)`,
           zIndex: 9999,
           width: "200px",
           height: "200px",
+          transition: "bottom 0.5s ease-in-out", // Hinzufügen für Ein-/Ausblenden
         }}
       >
         <img
@@ -195,6 +239,7 @@ const RobotWithEyes = () => {
             backgroundColor: "white",
             borderRadius: "50%",
             overflow: "hidden",
+            display: !isAtBottom || isHovered ? "block" : "none",
           }}
         >
           {/* Schatten 1 Auge 1 (Bananenform) */}
@@ -253,6 +298,7 @@ const RobotWithEyes = () => {
             backgroundColor: "white",
             borderRadius: "50%",
             overflow: "hidden",
+            display: !isAtBottom || isHovered ? "block" : "none",
           }}
         >
           {/* Schatten 1 Auge 2 (Bananenform) */}
@@ -328,7 +374,7 @@ const RobotWithEyes = () => {
             top: "42%",
             left: "52.5%",
             transform: "translate(-50%, -50%)",
-            display: !isHovered ? "block" : "none", // Display only when not hovered
+            display: !isHovered && !isAtBottom ? "block" : "none", // Display only when not hovered
             width: "30px",
             height: "30px",
           }}
@@ -342,6 +388,49 @@ const RobotWithEyes = () => {
             }}
           />
         </div>
+        {/* Weiße Rechtecke für Augen */}
+        <div
+          ref={eyeRefs.current[0]}
+          style={{
+            position: "absolute",
+            top: "35%",
+            left: "43%",
+            width: "7%",
+            height: "1%",
+            backgroundColor: "gray",
+            borderRadius: "50%",
+            overflow: "hidden",
+            display: isAtBottom && !isHovered ? "block" : "none", // Sichtbar, wenn das Ende der Seite erreicht ist
+          }}
+        ></div>
+        <div
+          ref={eyeRefs.current[1]}
+          style={{
+            position: "absolute",
+            top: "35%",
+            left: "55%",
+            width: "7%",
+            height: "1%",
+            backgroundColor: "gray",
+            borderRadius: "50%",
+            overflow: "hidden",
+            display: isAtBottom && !isHovered ? "block" : "none", // Sichtbar, wenn das Ende der Seite erreicht ist
+          }}
+        ></div>
+
+        {/* Weiße Rechtecke für Mund */}
+        <div
+          style={{
+            position: "absolute",
+            top: "41%",
+            left: "52.5%",
+            width: "20px",
+            height: "2px",
+            backgroundColor: "gray",
+            transform: "translateX(-50%)",
+            display: isAtBottom && !isHovered ? "block" : "none", // Sichtbar, wenn das Ende der Seite erreicht ist
+          }}
+        ></div>
       </div>
     </div>
   );
