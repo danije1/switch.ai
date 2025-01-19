@@ -143,12 +143,14 @@ const RobotWithEyes = () => {
   // Funktion, um die Sichtbarkeit der Augen und Münder basierend auf der Scrollposition zu steuern
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const bottomPosition =
-        document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPosition = window.scrollY; // Scroll-Position
+      const documentHeight = document.documentElement.scrollHeight; // Gesamthöhe der Seite
+      const windowHeight = window.innerHeight; // Fensterhöhe
+
+      const bottomPosition = documentHeight - windowHeight;
 
       // Überprüfe, ob der Benutzer am unteren Ende der Seite ist
-      if (scrollPosition === bottomPosition) {
+      if (scrollPosition >= bottomPosition) {
         setIsAtBottom(true);
       } else {
         setIsAtBottom(false);
