@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./Homepage.module.css";
 import RobotWithEyes from "./robot/robot"; // Pfad zur RobotWithEyes-Komponente
+import ImageSelector from "./components/ImageSelector";
 
 const HomePage = () => {
   const [isRobotMoving, setIsRobotMoving] = useState(false); // Zustand für Roboterbewegung
@@ -124,29 +125,8 @@ const HomePage = () => {
       <section className={styles.infographicSection}>
         <h1>Auf einen Blick: Wie du mit smarter Energie bares Geld sparst!</h1>
 
-        <div className={styles.infographicContent}>
-          {/* Auswahlmenü */}
-          <div className={styles.deviceSelection}>
-            <h3>Wähle deine Verbraucher</h3>
-            <ul>
-              <li>Backofen</li>
-              <li>Kühlschrank</li>
-              <li>Klimaanlage</li>
-              <li>Dusche</li>
-              <li>Staubsauger</li>
-              <li>Router</li>
-            </ul>
-          </div>
-
-          {/* Hausgrafik */}
-          <div className={styles.houseGraphic}>
-            <Image
-              src="/images/house_diagram.png"
-              alt="Haus Infografik"
-              width={600}
-              height={400}
-            />
-          </div>
+        <div style={{ width: "75%", margin: "0 auto" }}>
+          <ImageSelector />
         </div>
       </section>
 
