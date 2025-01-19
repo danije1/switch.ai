@@ -102,14 +102,6 @@ const HomePage = () => {
         <div className={styles.lineTop}></div>
         <div className={styles.lineMiddle}></div>
         <div className={styles.lineBottom}></div>
-        {/* Ladestation */}
-        <Image
-          src="/images/Charger.svg"
-          alt="Ladestation"
-          className={styles.chargingStation}
-          width={200}
-          height={400}
-        />
         {/* Roboter */}
         <RobotWithEyes />{" "}
         {/* SVG-Roboter, der jetzt rechts bleibt und mit der Seite mitfährt */}

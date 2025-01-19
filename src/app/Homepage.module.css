@@ -263,7 +263,6 @@
   font-size: large;
   text-align: justify;
   line-height: 1.6;
-  padding: 10px 50px;
 }
 
 @media (min-width: 768px) {
@@ -524,7 +523,6 @@
 /* Video Section Styling */
 .videoSection {
   text-align: center;
-  padding: 80px;
   background: linear-gradient(to bottom, #1a2453 0%, #08133c 50%, #08133c 100%);
   color: white;
 }
@@ -537,14 +535,11 @@
 .videoTitle {
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 20px;
 }
 
 .videoElement {
   max-width: 80%;
   height: auto;
-  border-radius: 15px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
   outline: none;
   margin-bottom: 30px;
 }
@@ -587,9 +582,6 @@
   justify-content: space-between;
   width: 350px;
   height: 400px;
-  padding: 12px;
-  align-items: center;
-  background: white;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -617,8 +609,6 @@
   flex-grow: 1;
   padding: 2px;
   text-align: center;
-  background: #08133c;
-  color: white;
 }
 
 .cardContent h3 {
@@ -912,7 +902,6 @@
 
 .compatibilityItem h3 {
   font-size: 1.8rem;
-  margin-bottom: 10px;
   font-family: "Roboto Condensed", sans-serif;
 }
 
@@ -946,7 +935,6 @@
 /* Footer Styling */
 .footer {
   /*max-width: 1400px;*/
-  margin: 0 auto;
   padding: 60px 20px;
   text-align: center;
   background: #1a2453;
@@ -970,7 +958,6 @@
 
 .footerLogo img {
   width: 50px;
-  margin-top: 5px;
   height: auto;
 }
 
