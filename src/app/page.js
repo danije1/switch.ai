@@ -237,7 +237,7 @@ const HomePage = () => {
             <div className={styles.cardInner}>
               <div className={styles.cardFront}>
                 <Image
-                  src="/images/Oink.png"
+                  src="/images/sparen.png"
                   alt="Fördermöglichkeiten"
                   width={326}
                   height={200}
@@ -262,35 +262,15 @@ const HomePage = () => {
       <section id="solutions" className={styles.kiSolutionsSection}>
         <h1 className={styles.sectionTitle}>Unsere KI-Lösungen</h1>
         <p className={styles.sectionDescription}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore.
+          Wir stellen KI-gestütze Smart Home Lösungen für alle Bereiche Ihres
+          Lebens zur Verfügung.
         </p>
 
         <div className={styles.kiSolutionsGrid}>
-          {/* Bild 1 */}
-          <div className={styles.kiItem}>
-            <Image
-              src="/images/AI bild 1.png"
-              alt="Heizungsteuerung"
-              width={300}
-              height={200}
-            />
-          </div>
-
-          {/* Bild 2 */}
-          <div className={styles.kiItem}>
-            <Image
-              src="/images/AI bild 2.png"
-              alt="Smart Home Wohnzimmer"
-              width={300}
-              height={200}
-            />
-          </div>
-
           {/* Bild 3 */}
           <div className={styles.kiItem}>
             <Image
-              src="/images/AI bild 3.png"
+              src="/images/AI bild 4.png"
               alt="Mikrochip"
               width={300}
               height={200}
@@ -300,7 +280,7 @@ const HomePage = () => {
           {/* Bild 4 */}
           <div className={styles.kiItem}>
             <Image
-              src="/images/AI bild 4.png"
+              src="/images/AI bild 3.png"
               alt="Smart Garage"
               width={300}
               height={200}
