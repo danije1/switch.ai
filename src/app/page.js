@@ -4,11 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./Homepage.module.css";
 import RobotWithEyes from "./robot/robot"; // Pfad zur RobotWithEyes-Komponente
-import ImageSelector from "./components/ImageSelector";
 
 const HomePage = () => {
   const [isRobotMoving, setIsRobotMoving] = useState(false); // Zustand für Roboterbewegung
   const [isRobotHovered, setIsRobotHovered] = useState(false); // Zustand für Hover-Ereignis
+  const [scale, setScale] = useState(1);
+  const [hoveredElement, setHoveredElement] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,13 +34,15 @@ const HomePage = () => {
           style={{ display: "flex", alignItems: "center" }}
         >
           <Image
-            src="/images/Logo switch_ai.gif"
+            src="/images/Logo switch_AI.gif"
             alt="switch.ai Logo"
             width={180}
             height={60}
             quality={100}
           />
-          <span className={styles.logo}>switch.ai</span>
+          <Link href="#page.js">
+            <span className={styles.logo}>switch.ai</span>
+          </Link>
         </div>
 
         {/* Navigation Links mit statischen Linien */}
@@ -79,21 +82,25 @@ const HomePage = () => {
           <p>
             Entdecken Sie intelligente Lösungen für ein nachhaltiges Zuhause.
           </p>
-          <button className={styles.ctaButton}>Jetzt anfragen!</button>
+          <Link href="/contact">
+            <button className={styles.ctaButton}>Jetzt anfragen!</button>
+          </Link>
         </div>
       </section>
 
       {/* Information Section */}
       <section id="infos" className={styles.infoSection}>
-        <h2>Was ist Smarte Energy und wie hilft KI dabei?</h2>
+        <h1>Was ist Smarte Energy und wie hilft KI dabei?</h1>
         <p>
-          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-          fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
-          sequi nesciunt. Neque porro quisquam est, qui dolorem.
+          Smarte Energy kombiniert moderne Technologien und künstliche
+          Intelligenz, um Energie effizienter zu nutzen und nachhaltige
+          Entscheidungen zu treffen.
         </p>
-        <button className={styles.learnMore}>
-          Erfahre mehr über unsere KI-Lösungen
-        </button>
+        <Link href="#solutions">
+          <button className={styles.learnMore}>
+            Erfahre mehr über unsere KI-Lösungen
+          </button>
+        </Link>
       </section>
 
       {/* Roboter Section mit Bewegung */}
@@ -117,8 +124,29 @@ const HomePage = () => {
       <section className={styles.infographicSection}>
         <h1>Auf einen Blick: Wie du mit smarter Energie bares Geld sparst!</h1>
 
-        <div style={{ width: "75%", margin: "0 auto" }}>
-          <ImageSelector />
+        <div className={styles.infographicContent}>
+          {/* Auswahlmenü */}
+          <div className={styles.deviceSelection}>
+            <h3>Wähle deine Verbraucher</h3>
+            <ul>
+              <li>Backofen</li>
+              <li>Kühlschrank</li>
+              <li>Klimaanlage</li>
+              <li>Dusche</li>
+              <li>Staubsauger</li>
+              <li>Router</li>
+            </ul>
+          </div>
+
+          {/* Hausgrafik */}
+          <div className={styles.houseGraphic}>
+            <Image
+              src="/images/house_diagram.png"
+              alt="Haus Infografik"
+              width={600}
+              height={400}
+            />
+          </div>
         </div>
       </section>
 
@@ -128,9 +156,15 @@ const HomePage = () => {
           Wie KI-gesteuerte Systeme den Energieverbrauch überwachen und
           optimieren
         </h1>
+        <div
+          className={styles.videoWrapper}
+          style={{
+            transform: `scale(${scale})`, // Dynamische Skalierung
+          }}
+        ></div>
         <video
           className={styles.videoElement}
-          src="/videos/ki-energie.mp4"
+          src="/videos/SwitchAI.mp4"
           autoPlay
           loop
           muted
@@ -145,50 +179,80 @@ const HomePage = () => {
           Vorteile einer KI-Smart Energy Lösung
         </h1>
         <p className={styles.sectionDescription}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore
+          Entdecke, wie künstliche Intelligenz dein Zuhause effizienter,
+          nachhaltiger und kostensparender machen kann – für eine bessere
+          Zukunft.
         </p>
-
         <div className={styles.cardsContainer}>
           {/* Karte 1 */}
-          <div className={styles.card}>
-            <Image
-              src="/images/AI hand mit glühbirne.png"
-              alt="Energie Management"
-              width={326}
-              height={200}
-            />
-            <div className={styles.cardContent}>
-              <h3>Vorteile der Nutzung von KI im Energiemanagement</h3>
-              <button className={styles.learnMoreButton}>Mehr erfahren</button>
+          <div className={`${styles.card} ${styles.flippable}`}>
+            <div className={styles.cardInner}>
+              <div className={styles.cardFront}>
+                <Image
+                  src="/images/AI hand mit glühbirne.png"
+                  alt="Energie Management"
+                  width={326}
+                  height={200}
+                />
+                <div className={styles.cardContent}>
+                  <h3>Vorteile der Nutzung von KI im Energiemanagement</h3>
+                </div>
+              </div>
+              <div className={styles.cardBack}>
+                <h3>Details</h3>
+                <p>
+                  KI-basierte Lösungen optimieren den Energieverbrauch, sparen
+                  Kosten und schonen die Umwelt.
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Karte 2 */}
-          <div className={styles.card}>
-            <Image
-              src="/images/weltkugel natur.png"
-              alt="Nachhaltigkeit"
-              width={326}
-              height={200}
-            />
-            <div className={styles.cardContent}>
-              <h3>Umweltvorteile und Beitrag zur Nachhaltigkeit</h3>
-              <button className={styles.learnMoreButton}>Mehr erfahren</button>
+          <div className={`${styles.card} ${styles.flippable}`}>
+            <div className={styles.cardInner}>
+              <div className={styles.cardFront}>
+                <Image
+                  src="/images/weltkugel natur.png"
+                  alt="Nachhaltigkeit"
+                  width={326}
+                  height={200}
+                />
+                <div className={styles.cardContent}>
+                  <h3>Umweltvorteile und Beitrag zur Nachhaltigkeit</h3>
+                </div>
+              </div>
+              <div className={styles.cardBack}>
+                <h3>Details</h3>
+                <p>
+                  Nachhaltige Energienutzung schützt die Umwelt und reduziert
+                  den CO2-Ausstoß nachhaltig.
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Karte 3 */}
-          <div className={styles.card}>
-            <Image
-              src="/images/Oink.png"
-              alt="Fördermöglichkeiten"
-              width={326}
-              height={200}
-            />
-            <div className={styles.cardContent}>
-              <h3>Fördermöglichkeiten und steuerliche Vorteile</h3>
-              <button className={styles.learnMoreButton}>Mehr erfahren</button>
+          <div className={`${styles.card} ${styles.flippable}`}>
+            <div className={styles.cardInner}>
+              <div className={styles.cardFront}>
+                <Image
+                  src="/images/Oink.png"
+                  alt="Fördermöglichkeiten"
+                  width={326}
+                  height={200}
+                />
+                <div className={styles.cardContent}>
+                  <h3>Fördermöglichkeiten und steuerliche Vorteile</h3>
+                </div>
+              </div>
+              <div className={styles.cardBack}>
+                <h3>Details</h3>
+                <p>
+                  Nutzen Sie staatliche Förderprogramme, um Ihre Smart
+                  Energy-Projekte zu finanzieren.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -249,27 +313,79 @@ const HomePage = () => {
         <h1 className={styles.sectionTitle}>Technische Voraussetzungen</h1>
         <div className={styles.requirementsGrid}>
           {/* Erste Box */}
-          <div className={styles.requirementItem}>
+          <div
+            className={styles.requirementItem}
+            onMouseEnter={() => setHoveredElement("Blitz")}
+            onMouseLeave={() => setHoveredElement(null)}
+          >
             <img src="/images/Blitz.svg" alt="Blitz Icon" />
-            <p>Sed ut perspiciatis</p>
+            <p>Energieeffizienz</p>
           </div>
 
           {/* Zweite Box */}
-          <div className={styles.requirementItem}>
+          <div
+            className={styles.requirementItem}
+            onMouseEnter={() => setHoveredElement("Cloud")}
+            onMouseLeave={() => setHoveredElement(null)}
+          >
             <img src="/images/Wolke.svg" alt="Cloud Icon" />
-            <p>Lorem ipsum dolor</p>
+            <p>Cloud-Verbindung</p>
           </div>
 
           {/* Dritte Box */}
-          <div className={styles.requirementItem}>
+          <div
+            className={styles.requirementItem}
+            onMouseEnter={() => setHoveredElement("Code")}
+            onMouseLeave={() => setHoveredElement(null)}
+          >
             <img src="/images/Code.svg" alt="Code Icon" />
-            <p>Nemo enim ipsam</p>
+            <p>Software-Steuerung</p>
           </div>
 
           {/* Vierte Box */}
-          <div className={styles.requirementItem}>
+          <div
+            className={styles.requirementItem}
+            onMouseEnter={() => setHoveredElement("Lock")}
+            onMouseLeave={() => setHoveredElement(null)}
+          >
             <img src="/images/Lock.svg" alt="Lock Icon" />
-            <p>Tempor incididunt</p>
+            <p>Datensicherheit</p>
+          </div>
+
+          <div className={styles.centralElement}>
+            {hoveredElement === "Blitz" && (
+              <div>
+                <img src="/images/Blitz.svg" alt="Blitz" />
+                <p>Energie effizient nutzen</p>
+              </div>
+            )}
+          </div>
+
+          <div className={styles.centralElement}>
+            {hoveredElement === "Cloud" && (
+              <div>
+                <img src="/images/Wolke.svg" alt="Cloud Icon" />
+                <p>Smarte Cloud-Verbindung</p>
+              </div>
+            )}
+          </div>
+
+          <div className={styles.centralElement}>
+            {hoveredElement === "Code" && (
+              <div>
+                <img src="/images/Code.svg" alt="Code Icon" />
+                <p>Zukuftssichere Software-Steuerung</p>
+              </div>
+            )}
+          </div>
+
+          <div className={styles.centralElement}>
+            {hoveredElement === "Lock" && (
+              <div>
+                <img src="/images/Lock.svg" alt="Lock Icon" />
+                <p>Maximale Datensicherheit</p>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -284,17 +400,10 @@ const HomePage = () => {
         {/* Text und Button in der Mitte */}
         <div className={styles.smartControlText}>
           <h2>Hol dir die smarte Kontrolle!</h2>
-          <button className={styles.smartButton}>Jetzt entdecken</button>
+          <Link href="/contact">
+            <button className={styles.smartButton}>Jetzt entdecken</button>
+          </Link>
         </div>
-
-        {/* Ladestation (statisch) */}
-        <Image
-          src="/images/Charger.svg"
-          alt="Ladestation"
-          className={styles.smartCharger}
-          width={200}
-          height={400}
-        />
       </section>
 
       <section className={styles.compatibilitySection}>
@@ -350,12 +459,22 @@ const HomePage = () => {
 
       <footer id="contact" className={styles.footer}>
         <div className={styles.footerContent}>
+          {/* Ladestation (statisch) */}
+          <Image
+            src="/images/Charger.svg"
+            alt="Ladestation"
+            className={styles.smartCharger}
+            width={200}
+            height={400}
+          />
           <div className={styles.footerLogo}>
             <img src="/images/Logo switchAI.svg" alt="switch.ai Logo" />
-            <span>switch.ai</span>
+            <Link href="#page.js">
+              <span>switch.ai</span>
+            </Link>
           </div>
           <div className={styles.footerLine}></div>
-          <p className={styles.copyright}>© Gruppe04 DMWT 2024</p>
+          <p className={styles.copyright}>© Gruppe04 DMWT 2025</p>
         </div>
       </footer>
     </div>

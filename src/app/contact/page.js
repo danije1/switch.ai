@@ -43,6 +43,26 @@ const ContactPage = () => {
 
   return (
     <div className={styles.contactContainer}>
+      <nav
+        className={styles.navbar}
+        style={{ backgroundColor: "rgba(0, 0, 0, 0)" }}
+      >
+        <div
+          className={styles.logoContainer}
+          style={{ display: "flex", alignItems: "center" }}
+        >
+          <Image
+            src="/images/Logo switch_AI.gif"
+            alt="switch.ai Logo"
+            width={180}
+            height={60}
+            quality={100}
+          />
+          <Link href="/">
+            <span className={styles.logo}>switch.ai</span>
+          </Link>
+        </div>
+      </nav>
       <h1 className={styles.contactTitle}>Kontakt</h1>
       <p className={styles.contactSubtitle}>
         Hast du Fragen oder Anregungen? Schreibe uns eine Nachricht!
