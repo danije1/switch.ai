@@ -116,9 +116,9 @@ const ContactPage = () => {
 
       {status && <p className={styles.statusMessage}>{status}</p>}
 
-      <div className={styles.backToHome}>
+      {/*<div className={styles.backToHome}>
         <Link href="/">Zurück zur Startseite</Link>
-      </div>
+      </div>*/}
     </div>
   );
 };

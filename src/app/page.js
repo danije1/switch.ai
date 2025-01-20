@@ -242,22 +242,14 @@ const HomePage = () => {
         <div className={styles.kiSolutionsGrid}>
           {/* Bild 3 */}
           <div className={styles.kiItem}>
-            <Image
-              src="/images/AI bild 4.png"
-              alt="Mikrochip"
-              width={300}
-              height={200}
-            />
+            <Image src="/images/AI bild 4.png" alt="Mikrochip" width={300} height={200}/>
+            <div className={styles.hoverText}>Revolutioniere die Effizienz deiner Geräte.</div>
           </div>
-
+          
           {/* Bild 4 */}
           <div className={styles.kiItem}>
-            <Image
-              src="/images/AI bild 3.png"
-              alt="Smart Garage"
-              width={300}
-              height={200}
-            />
+            <Image src="/images/AI bild 3.png" alt="Smart Garage" width={300} height={200}/>
+            <div className={styles.hoverText}>Erlebe die Zukunft deines vernetzten Zuhauses.</div>  
           </div>
         </div>
       </section>
