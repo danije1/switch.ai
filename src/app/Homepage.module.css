@@ -216,6 +216,7 @@
 @media (max-width: 768px) {
   .heroText {
     font-size: 2rem;
+    color: white;
   }
 
   .ctaButton {
@@ -228,6 +229,7 @@
   text-align: center;
   padding: 50px;
   background: #08133c;
+  color: white;
 }
 
 .learnMore {
@@ -272,6 +274,7 @@
     max-width: 100%;
     padding: 10px 350px; /* Etwas größere Werte */
     font-size: 1rem;
+    color: "white";
   }
 }
 
@@ -281,6 +284,7 @@
     margin: 0; /* Originalwerte */
     padding: 10px 20px;
     font-size: 1rem;
+    color: "white";
   }
 }
 
@@ -476,12 +480,20 @@
   text-align: center;
   background: linear-gradient(to bottom, #08133c 50%, #1a2453 100%);
   color: white;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 .infographicSection h1 {
   font-size: 40px;
-  margin-bottom: 60px;
+  margin-bottom: 10px;
   font-family: "Roboto Condensed", sans-serif;
+}
+.infographicSection p {
+  max-width: 100%;
+  margin-bottom: 30px; /* Originalwerte */
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: "white";
 }
 
 .infographicContent {
@@ -619,7 +631,7 @@
 .sectionDescription {
   font-size: 1.2rem;
   margin-bottom: 40px;
-  color: #d1d1d1;
+  color: white;
   font-family: "Roboto Condensed", sans-serif;
 }
 
@@ -733,7 +745,6 @@
 
 .kiItem:hover {
   transform: scale(1.1); /* Vergrößerung des Bilds */
-  
 }
 
 .kiItem img {
@@ -778,7 +789,7 @@
 .sectionDescription {
   font-size: 1.2rem;
   margin-bottom: 40px;
-  color: #d1d1d1;
+  color: white;
   font-family: "Roboto Condensed", sans-serif;
 }
 
@@ -819,7 +830,7 @@
 }
 
 .requirementsGrid::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 90%;
   height: 2px;
@@ -1144,43 +1155,46 @@
   position: fixed; /* Fixiert den Roboter an der Seite */
   right: 20px; /* Positioniert den Roboter 20px vom rechten Rand */
   top: 50%; /* Vertikale Zentrierung auf der Seite */
-  transform: translateY(-50%); /* Kompensation der Höhe des Roboters für exakte vertikale Zentrierung */
+  transform: translateY(
+    -50%
+  ); /* Kompensation der Höhe des Roboters für exakte vertikale Zentrierung */
   z-index: 9999; /* Sicherstellen, dass der Roboter immer im Vordergrund bleibt */
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
   .heroText {
-      font-size: 2rem;
+    font-size: 2rem;
+    color: "white";
   }
 
   .ctaButton {
-      padding: 12px 24px;
-      font-size: 1rem;
+    padding: 12px 24px;
+    font-size: 1rem;
   }
 
   .infoSection p {
-      padding: 10px;
-      font-size: 1rem;
+    padding: 10px;
+    font-size: 1rem;
   }
 
   .requirementsGrid {
-      grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
 
   .cardsContainer {
-      gap: 10px;
+    gap: 10px;
   }
 }
 
 @media (max-width: 480px) {
   .navbar {
-      flex-direction: column;
-      padding: 10px;
+    flex-direction: column;
+    padding: 10px;
   }
 
   .linksContainer {
-      flex-direction: column;
-      gap: 10px;
+    flex-direction: column;
+    gap: 10px;
   }
 }
