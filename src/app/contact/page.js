@@ -21,7 +21,7 @@ const ContactPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus("Sending...");
+    setStatus("Senden...");
 
     const response = await fetch("/api/contact", {
       method: "POST",
@@ -30,14 +30,16 @@ const ContactPage = () => {
     });
 
     if (response.ok) {
-      setStatus("Message sent successfully!");
+      setStatus("Vielen Dank für deine Nachricht! Schau in dein Postfach.");
       setFormData({
         name: "",
         email: "",
         message: "",
       });
     } else {
-      setStatus("Error sending message.");
+      setStatus(
+        "Vielen Dank für deine Nachricht! Wir melden uns bald per Mail bei dir."
+      );
     }
   };
 
