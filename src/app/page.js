@@ -114,7 +114,7 @@ const HomePage = () => {
         {isRobotHovered && <div className={styles.robotTooltip}></div>}
       </section>
       {/* Infografik Section */}
-      <section className={styles.infoSection}>
+      <section className={styles.infographicSection}>
         <h1>Auf einen Blick: Wie du mit smarter Energie bares Geld sparst!</h1>
         <p>
           Wähle deine Verbraucher und deine Wohnfläche und entdecke dein
@@ -242,14 +242,28 @@ const HomePage = () => {
         <div className={styles.kiSolutionsGrid}>
           {/* Bild 3 */}
           <div className={styles.kiItem}>
-            <Image src="/images/AI bild 4.png" alt="Mikrochip" width={300} height={200}/>
-            <div className={styles.hoverText}>Revolutioniere die Effizienz deiner Geräte.</div>
+            <Image
+              src="/images/AI bild 4.png"
+              alt="Mikrochip"
+              width={300}
+              height={200}
+            />
+            <div className={styles.hoverText}>
+              Revolutioniere die Effizienz deiner Geräte.
+            </div>
           </div>
-          
+
           {/* Bild 4 */}
           <div className={styles.kiItem}>
-            <Image src="/images/AI bild 3.png" alt="Smart Garage" width={300} height={200}/>
-            <div className={styles.hoverText}>Erlebe die Zukunft deines vernetzten Zuhauses.</div>  
+            <Image
+              src="/images/AI bild 3.png"
+              alt="Smart Garage"
+              width={300}
+              height={200}
+            />
+            <div className={styles.hoverText}>
+              Erlebe die Zukunft deines vernetzten Zuhauses.
+            </div>
           </div>
         </div>
       </section>
