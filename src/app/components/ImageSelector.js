@@ -16,8 +16,8 @@ const ImageSelector = () => {
     6: { top: 23.5, left: 49.5 },
     7: { top: 50.85, left: 39.8 },
     8: { top: 52.5, left: 25.6 },
-    9: { top: 70.8, left: 58.5 },
-    10: { top: 79.5, left: 41.85 },
+    9: { top: 70.3, left: 58.5 },
+    10: { top: 79.27, left: 41 },
   });
 
   const devices = [
@@ -104,7 +104,7 @@ const ImageSelector = () => {
   ];
 
   useEffect(() => {
-    if (squareMeters) {
+    if (squareMeters > 0) {
       const updatedSavings = devices.reduce((acc, device) => {
         const count = counts[device.id - 1];
         if (count > 0) {
@@ -117,6 +117,8 @@ const ImageSelector = () => {
         return acc;
       }, {});
       setCalculatedSavings(updatedSavings);
+    } else {
+      setCalculatedSavings({});
     }
   }, [counts, squareMeters]);
 
@@ -134,6 +136,11 @@ const ImageSelector = () => {
     setCounts(newCounts);
   };
 
+  const handleSquareMetersChange = (value) => {
+    const numericValue = Math.max(0, Number(value)); // Verhindert negative Werte
+    setSquareMeters(numericValue);
+  };
+
   const handleReset = () => {
     setCounts(Array(10).fill(0));
     setSquareMeters("");
@@ -146,7 +153,7 @@ const ImageSelector = () => {
       return (
         <div
           style={{
-            fontSize: "clamp(0.8rem, 1vw, 1rem)",
+            fontSize: "clamp(0.8rem, 1vw, 1.1rem)",
             color: "red",
             marginTop: "10px",
             position: "absolute",
@@ -155,7 +162,7 @@ const ImageSelector = () => {
             textAlign: "center",
           }}
         >
-          Quadratmeterzahl fehlt!
+          Wohnfläche eingeben
         </div>
       );
     }
@@ -163,12 +170,12 @@ const ImageSelector = () => {
       return (
         <div
           style={{
-            fontSize: "clamp(0.8rem, 1vw, 1rem)",
+            fontSize: "clamp(0.8rem, 1vw, 1.1rem)",
             color: "#28a745",
             marginTop: "10px",
             position: "absolute",
             bottom: "-20px",
-            width: "100%",
+            width: "150%",
             textAlign: "center",
             background: "rgba(255, 255, 255, 0.8)",
             borderRadius: "5px",
@@ -222,8 +229,15 @@ const ImageSelector = () => {
                   position: "absolute",
                   top: `${devicePositions[device.id].top}%`,
                   left: `${devicePositions[device.id].left}%`,
-                  border: counts[device.id - 1] > 0 ? "2px solid #28a745" : "",
+                  border:
+                    counts[device.id - 1] > 0 && calculatedSavings[device.id]
+                      ? "4px solid #9DFF00"
+                      : counts[device.id - 1] > 0
+                      ? "4px solid gray"
+                      : "",
                   padding: "5px",
+                  color: "#9DFF00",
+                  opacity: 1,
                   borderRadius: "8px",
                   textAlign: "center",
                 }}
@@ -314,7 +328,7 @@ const ImageSelector = () => {
                       onClick={() => handleDeviceChange(index, "decrement")}
                       style={{
                         padding: "5px 10px",
-                        backgroundColor: "#dc3545",
+                        backgroundColor: "#0A6AC0",
                         border: "none",
                         borderRadius: "5px",
                         color: "white",
@@ -328,7 +342,7 @@ const ImageSelector = () => {
                       onClick={() => handleDeviceChange(index, "increment")}
                       style={{
                         padding: "5px 10px",
-                        backgroundColor: "#28a745",
+                        backgroundColor: "#0A6AC0",
                         border: "none",
                         borderRadius: "5px",
                         color: "white",
@@ -347,7 +361,7 @@ const ImageSelector = () => {
               htmlFor="squareMeters"
               style={{ display: "block", fontSize: "clamp(0.9rem, 1vw, 1rem)" }}
             >
-              Quadratmeter eingeben! :
+              Wohnfläche in qm :
             </label>
             <input
               type="number"
@@ -355,6 +369,7 @@ const ImageSelector = () => {
               name="squareMeters"
               value={squareMeters}
               onChange={(e) => setSquareMeters(e.target.value)}
+              min="0"
               style={{
                 padding: "10px",
                 fontSize: "clamp(0.9rem, 1vw, 1rem)",
@@ -371,7 +386,7 @@ const ImageSelector = () => {
             onClick={handleReset}
             style={{
               padding: "12px",
-              backgroundColor: "#007bff",
+              backgroundColor: "#0A6AC0",
               color: "white",
               fontSize: "clamp(0.9rem, 1vw, 1rem)",
               border: "none",

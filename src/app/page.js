@@ -111,15 +111,15 @@ const HomePage = () => {
         {/* Roboter */}
         <RobotWithEyes />{" "}
         {/* SVG-Roboter, der jetzt rechts bleibt und mit der Seite mitfährt */}
-        {isRobotHovered && (
-          <div className={styles.robotTooltip}>
-            <p>Hallo! Ich bin hier, um dir zu helfen. 🤖</p>
-          </div>
-        )}
+        {isRobotHovered && <div className={styles.robotTooltip}></div>}
       </section>
       {/* Infografik Section */}
-      <section className={styles.infographicSection}>
+      <section className={styles.infoSection}>
         <h1>Auf einen Blick: Wie du mit smarter Energie bares Geld sparst!</h1>
+        <p>
+          Wähle deine Verbraucher und deine Wohnfläche und entdecke dein
+          Einsparungspotenzial.
+        </p>
 
         <div style={{ width: "75%", margin: "0 auto" }}>
           <ImageSelector />
