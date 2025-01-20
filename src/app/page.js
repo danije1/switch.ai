@@ -353,7 +353,6 @@ const HomePage = () => {
           </div>
         )}
       </section>
-      );
       <section className={styles.smartControlSection}>
         <div className={styles.circleLeft}></div>
         <div className={styles.circleRight}></div>
