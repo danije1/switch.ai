@@ -844,6 +844,7 @@
   pointer-events: none;
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   z-index: 2;
+  width: 20%;
 }
 
 /* Sichtbar machen, wenn ein Item gehyvert wird */
@@ -888,7 +889,6 @@
     font-size: 14px;
   }
 }
-
 /* Smarte Kontrolle Section */
 .smartControlSection {
   position: relative;
@@ -900,37 +900,32 @@
   align-items: center;
   flex-direction: column;
   text-align: center;
+  will-change: transform; /* Optimiert die Transformation */
 }
 
 /* Linien */
-.lineTop {
+.lineTop,
+.lineMiddle,
+.lineBottom {
   position: absolute;
-  top: 45%;
   width: 100%;
   height: 6px;
   background: white;
   z-index: 1;
-  margin-top: 5px;
 }
 
 .lineMiddle {
-  position: absolute;
   top: 50%;
-  width: 100%;
   height: 5px;
   background: #4a90e2; /* Blaue Linie */
-  z-index: 1;
-  margin-top: 5px;
+}
+
+.lineTop {
+  top: 45%;
 }
 
 .lineBottom {
-  position: absolute;
   top: 55%;
-  width: 100%;
-  height: 6px;
-  background: white;
-  z-index: 1;
-  margin-top: 3px;
 }
 
 /* Kreise */
@@ -941,6 +936,7 @@
   border-radius: 50%;
   background: #d3d3d3;
   border: 7px solid #1a73e8;
+  will-change: transform; /* Optimiert die Transformation */
 }
 
 /* Text und Button */
@@ -952,9 +948,10 @@
   color: white;
   font-size: 3rem;
   font-weight: bold;
-  z-index: 2;
+  z-index: 2; /* Höher als Linien */
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
   font-family: "Roboto Condensed", sans-serif;
+  will-change: transform; /* Optimiert die Transformation */
 }
 
 .smartButton {
@@ -968,6 +965,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: "Roboto Condensed", sans-serif;
+  will-change: transform; /* Optimiert die Transformation */
 }
 
 .smartButton:hover {

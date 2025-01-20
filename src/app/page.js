@@ -74,7 +74,6 @@ const HomePage = () => {
           <button className={styles.register}>Register</button>
         </div>*/}
       </nav>
-
       {/* Hero Section */}
       <section className={styles.heroSection}>
         <img src="/images/smart_home.png" alt="Smart Home Hero" />
@@ -88,7 +87,6 @@ const HomePage = () => {
           </Link>
         </div>
       </section>
-
       {/* Information Section */}
       <section id="infos" className={styles.infoSection}>
         <h1>Was ist Smarte Energy und wie hilft KI dabei?</h1>
@@ -103,7 +101,6 @@ const HomePage = () => {
           </button>
         </Link>
       </section>
-
       {/* Roboter Section mit Bewegung */}
       <section className={styles.robotSection}>
         <div className={styles.circleLeft}></div>
@@ -120,7 +117,6 @@ const HomePage = () => {
           </div>
         )}
       </section>
-
       {/* Infografik Section */}
       <section className={styles.infographicSection}>
         <h1>Auf einen Blick: Wie du mit smarter Energie bares Geld sparst!</h1>
@@ -129,7 +125,6 @@ const HomePage = () => {
           <ImageSelector />
         </div>
       </section>
-
       {/* Video Section */}
       <section className={styles.videoSection}>
         <h1 className={styles.videoTitle}>
@@ -152,7 +147,6 @@ const HomePage = () => {
           controls
         />
       </section>
-
       {/* Karten Section */}
       <section id="benefits" className={styles.cardsSection}>
         <h1 className={styles.sectionCardTitle}>
@@ -237,7 +231,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
       {/* KI-Lösungen Section */}
       <section id="solutions" className={styles.kiSolutionsSection}>
         <h1 className={styles.sectionTitle}>Unsere KI-Lösungen</h1>
@@ -268,7 +261,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
       <section id="requirements" className={styles.requirementsSection}>
         <h1 className={styles.sectionTitle}>Technische Voraussetzungen</h1>
         <div className={styles.requirementsGrid}>
@@ -279,7 +271,7 @@ const HomePage = () => {
             onMouseLeave={() => setHoveredElement(null)}
           >
             <img src="/images/Blitz.svg" alt="Blitz Icon" />
-            <p>Energieeffizienz</p>
+            <p>Stromversorgung</p>
           </div>
 
           {/* Zweite Box */}
@@ -289,7 +281,7 @@ const HomePage = () => {
             onMouseLeave={() => setHoveredElement(null)}
           >
             <img src="/images/Wolke.svg" alt="Cloud Icon" />
-            <p>Cloud-Verbindung</p>
+            <p>Internetverbindung</p>
           </div>
 
           {/* Dritte Box */}
@@ -311,45 +303,51 @@ const HomePage = () => {
             <img src="/images/Lock.svg" alt="Lock Icon" />
             <p>Datensicherheit</p>
           </div>
+        </div>
 
+        {/* Zentrales Element für den Text */}
+        {hoveredElement && (
           <div className={styles.centralElement}>
             {hoveredElement === "Blitz" && (
-              <div>
-                <img src="/images/Blitz.svg" alt="Blitz" />
-                <p>Energie effizient nutzen</p>
-              </div>
+              <>
+                <img src="/images/Blitz.svg" alt="Blitz Icon" />
+                <p>
+                  Um unsere Services zuverlässig nutzen zu können, ist eine
+                  stabile Stromversorgung wichtig.
+                </p>
+              </>
             )}
-          </div>
-
-          <div className={styles.centralElement}>
             {hoveredElement === "Cloud" && (
-              <div>
+              <>
                 <img src="/images/Wolke.svg" alt="Cloud Icon" />
-                <p>Smarte Cloud-Verbindung</p>
-              </div>
+                <p>
+                  Eine schnelle und stabile Internetverbindung ist für einige
+                  Echtzeitfunktionen erforderlich.
+                </p>
+              </>
             )}
-          </div>
-
-          <div className={styles.centralElement}>
             {hoveredElement === "Code" && (
-              <div>
+              <>
                 <img src="/images/Code.svg" alt="Code Icon" />
-                <p>Zukuftssichere Software-Steuerung</p>
-              </div>
+                <p>
+                  Kenntnisse im Umgang mit APIs sind hilfreich, um die Services
+                  individuell anzupassen.
+                </p>
+              </>
             )}
-          </div>
-
-          <div className={styles.centralElement}>
             {hoveredElement === "Lock" && (
-              <div>
+              <>
                 <img src="/images/Lock.svg" alt="Lock Icon" />
-                <p>Maximale Datensicherheit</p>
-              </div>
+                <p>
+                  Die Datensicherheit wird gewährleistet, während Sie die
+                  interne Sicherheit selbst anpassen können.
+                </p>
+              </>
             )}
           </div>
-        </div>
+        )}
       </section>
-
+      );
       <section className={styles.smartControlSection}>
         <div className={styles.circleLeft}></div>
         <div className={styles.circleRight}></div>
@@ -365,7 +363,6 @@ const HomePage = () => {
           </Link>
         </div>
       </section>
-
       <section className={styles.compatibilitySection}>
         <h2>Kompatibilität mit anderen Smart-Home Systemen</h2>
 
@@ -416,7 +413,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
       <footer id="contact" className={styles.footer}>
         <div className={styles.footerContent}>
           {/* Ladestation (statisch) */}
