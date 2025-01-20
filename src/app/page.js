@@ -35,7 +35,7 @@ const HomePage = () => {
           style={{ display: "flex", alignItems: "center" }}
         >
           <Image
-            src="/images/Logo switch_AI.gif"
+            src="/images/Logo switch_ai.gif"
             alt="switch.ai Logo"
             width={180}
             height={60}
